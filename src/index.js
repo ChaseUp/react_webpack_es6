@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
+import $ from "jquery";
 import Header from "./header.js";
 import Container from "./container.js";
 import "../css/style.scss";

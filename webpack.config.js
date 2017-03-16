@@ -8,9 +8,12 @@ var extractCSS = new ExtractTextPlugin('css/style.css');
 var extractSASS = new ExtractTextPlugin('css/style.css');
 
 module.exports = {
-	entry: './src/index.js',
+	entry: {
+		bundle: './src/index.js',
+		vendor: ['react','react-dom']
+	},
 	output: {
-		filename: 'bundle.js',
+		filename: '[name].js',
 		path: path.resolve(__dirname,'dist/js/')
 	},
 	devtool: 'source-map',
@@ -44,6 +47,9 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new webpack.optimize.CommonsChunkPlugin({
+            names: ['vendor'],
+        }),
         extractCSS,
         extractSASS
     ]
