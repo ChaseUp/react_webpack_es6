@@ -3,9 +3,12 @@
 */
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');	// 分离css模块，打包成单独的文件
 var extractCSS = new ExtractTextPlugin('css/style.css');
 var extractSASS = new ExtractTextPlugin('css/style.css');
+var commonPlugin = new webpack.optimize.CommonsChunkPlugin({	// 分离第三方插件，打包到vendor.js
+    names: ['vendor']
+});
 
 module.exports = {
 	entry: {
@@ -47,9 +50,7 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor'],
-        }),
+		commonPlugin,
         extractCSS,
         extractSASS
     ]
