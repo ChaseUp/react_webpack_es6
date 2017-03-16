@@ -13,7 +13,7 @@ var commonPlugin = new webpack.optimize.CommonsChunkPlugin({	// 分离第三方�
 module.exports = {
 	entry: {
 		bundle: './src/index.js',
-		vendor: ['react','react-dom']
+		vendor: ['react','react-dom','jquery']
 	},
 	output: {
 		filename: '[name].js',
