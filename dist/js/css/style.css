@@ -140,6 +140,8 @@ body {
 #container {
   width: 1200px;
   margin: 20px auto; }
+  #container .container-inner {
+    overflow: hidden; }
 
 /*aside*/
 #aside {

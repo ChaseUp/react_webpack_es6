@@ -3,7 +3,6 @@ import ReactDom from "react-dom";
 import $ from "jquery";
 import Header from "./header.js";
 import Container from "./container.js";
-import "../css/style.scss";
 
 const UrlPath = {
 	header: "dist/js/json/header.json"

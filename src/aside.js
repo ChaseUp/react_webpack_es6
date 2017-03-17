@@ -18,6 +18,27 @@ export default class Aside extends React.Component{
 						</div>
 					</div>
 				</div>
+				<ul className="social-list">
+					<li></li>
+				</ul>
+				<SocialManage />
+			</div>
+		)
+	}
+}
+
+class SocialManage extends React.Component{
+	render(){
+		return (
+			<div className="">
+				<a className="manage-social-btn" href="javascript:;">管理社交媒体账号</a>
+				<div className="pop-social-manage">
+					<div className="pop-box">
+						<div className="pop-title">管理社交媒体</div>
+						<div className="pop-main"></div>
+						<div className="pop-btns"></div>
+					</div>
+				</div>
 			</div>
 		)
 	}

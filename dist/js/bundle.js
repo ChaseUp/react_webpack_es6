@@ -80,7 +80,13 @@ var Aside = function (_React$Component) {
 							)
 						)
 					)
-				)
+				),
+				_react2.default.createElement(
+					"ul",
+					{ className: "social-list" },
+					_react2.default.createElement("li", null)
+				),
+				_react2.default.createElement(SocialManage, null)
 			);
 		}
 	}]);
@@ -89,6 +95,48 @@ var Aside = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Aside;
+
+var SocialManage = function (_React$Component2) {
+	_inherits(SocialManage, _React$Component2);
+
+	function SocialManage() {
+		_classCallCheck(this, SocialManage);
+
+		return _possibleConstructorReturn(this, (SocialManage.__proto__ || Object.getPrototypeOf(SocialManage)).apply(this, arguments));
+	}
+
+	_createClass(SocialManage, [{
+		key: "render",
+		value: function render() {
+			return _react2.default.createElement(
+				"div",
+				{ className: "" },
+				_react2.default.createElement(
+					"a",
+					{ className: "manage-social-btn", href: "javascript:;" },
+					"\u7BA1\u7406\u793E\u4EA4\u5A92\u4F53\u8D26\u53F7"
+				),
+				_react2.default.createElement(
+					"div",
+					{ className: "pop-social-manage" },
+					_react2.default.createElement(
+						"div",
+						{ className: "pop-box" },
+						_react2.default.createElement(
+							"div",
+							{ className: "pop-title" },
+							"\u7BA1\u7406\u793E\u4EA4\u5A92\u4F53"
+						),
+						_react2.default.createElement("div", { className: "pop-main" }),
+						_react2.default.createElement("div", { className: "pop-btns" })
+					)
+				)
+			);
+		}
+	}]);
+
+	return SocialManage;
+}(_react2.default.Component);
 
 /***/ }),
 
@@ -252,8 +300,6 @@ var _header2 = _interopRequireDefault(_header);
 var _container = __webpack_require__(87);
 
 var _container2 = _interopRequireDefault(_container);
-
-__webpack_require__(89);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -425,13 +471,6 @@ var Header = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Header;
-
-/***/ }),
-
-/***/ 89:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 
