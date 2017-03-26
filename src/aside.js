@@ -1,9 +1,9 @@
-import React from "react";
+import React,{Component} from "react";
 
-export default class Aside extends React.Component{
+export default class Aside extends Component{
 	render(){
 		return (
-			<div id="aside">
+			<div id="aside" className="tt">
 				<div className="asideTop">
 					<img className="avatar" src="images/avatar.jpg" />
 					<p className="job">超级管理员</p>
@@ -27,7 +27,7 @@ export default class Aside extends React.Component{
 	}
 }
 
-class SocialManage extends React.Component{
+class SocialManage extends Component{
 	render(){
 		return (
 			<div className="">
