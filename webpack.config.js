@@ -4,20 +4,20 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');	// 分离css模块，打包成单独的文件
-var extractCSS = new ExtractTextPlugin('css/style.css');
-var extractSASS = new ExtractTextPlugin('css/style.css');
+var extractCSS = new ExtractTextPlugin('/css/style.css');
+var extractSASS = new ExtractTextPlugin('/css/style.css');
 var commonPlugin = new webpack.optimize.CommonsChunkPlugin({	// 分离第三方插件，打包到vendor.js
     names: ['vendor']
 });
 
 module.exports = {
 	entry: {
-		bundle: './src/index.js',
+		bundle: './public/src/js/index.js',
 		vendor: ['react','react-dom','jquery']
 	},
 	output: {
 		filename: '[name].js',
-		path: path.resolve(__dirname,'dist/js/')
+		path: path.resolve(__dirname,'./public/dist/')
 	},
 	devtool: 'source-map',
 	module: {
