@@ -1,19 +1,34 @@
 import React,{Component} from "react";
+import $ from "jquery";
 
 export default class Aside extends Component{
+	constructor(props){
+		super(props);
+		this.state = {msg: {}};
+	}
+	componentDidMount(){
+		$.ajax({
+			url: "/aside",
+			type: "GET",
+			datatype: "json",
+			success: function(xhr){
+				this.setState({msg: xhr});
+			}.bind(this)
+		});
+	}
 	render(){
 		return (
 			<div id="aside" className="tt">
 				<div className="asideTop">
 					<img className="avatar" src="/dist/images/avatar.jpg" />
-					<p className="job">超级管理员</p>
+					<p className="job">{this.state.msg.job}</p>
 					<div className="msg-num">
 						<div className="sended">
-							<p className="num">4</p>
+							<p className="num">{this.state.msg.sended}</p>
 							<p className="tip">已发送信息</p>
 						</div>
 						<div className="will-send">
-							<p className="num">8</p>
+							<p className="num">{this.state.msg.unsend}</p>
 							<p className="tip">待发送信息</p>
 						</div>
 					</div>

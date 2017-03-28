@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack --watch --colors --progress",
-    "dev": "webpack-dev-server --watch --progress --colors --hot"
+    "dev": "webpack-dev-server --watch --progress --colors --hot",
+    "server": "supervisor app.js"
   },
   "author": "chenjian",
   "license": "ISC",

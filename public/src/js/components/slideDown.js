@@ -4,18 +4,22 @@ export default class SlideDown extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			contsShow: false
+			contsShow: false,
+			clicked: false
 		}
 	}
 	slideToggle(){
-		this.setState({contsShow: !this.state.contsShow});
+		this.setState({
+			contsShow: !this.state.contsShow,
+			clicked: !this.state.clicked
+		});
 	}
 	render(){
 		if (this.props.navMsg === undefined || this.props.userName === undefined) {
 			return false;
 		}
 		return (
-			<div className="g-slide-container">
+			<div className={"g-slide-container" + (this.state.clicked ? " on" : "")}>
 				<div className="g-slide-title" onClick={this.slideToggle.bind(this)}>
 					{this.props.userName}
 					<i className="fa fa-caret-down" aria-hidden="true"></i>
