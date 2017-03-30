@@ -204,7 +204,7 @@ body {
 /*globle*/
 .g-slide-container {
   position: relative; }
-  .g-slide-container:hover .g-slide-contbox {
+  .g-slide-container:not(.on):hover .g-slide-contbox {
     display: block; }
   .g-slide-container .g-slide-title {
     width: 100%;
@@ -214,7 +214,8 @@ body {
     position: absolute;
     top: 52px;
     left: 0;
-    overflow: hidden;
+    overflow: hidden; }
+  .g-slide-container:not(.on) .g-slide-contbox {
     display: none; }
   .g-slide-container .g-slide-conts {
     background-color: #fff;

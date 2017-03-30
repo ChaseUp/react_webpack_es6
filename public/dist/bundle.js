@@ -16,6 +16,10 @@ var _react = __webpack_require__(13);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _jquery = __webpack_require__(33);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27,13 +31,28 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Aside = function (_Component) {
 	_inherits(Aside, _Component);
 
-	function Aside() {
+	function Aside(props) {
 		_classCallCheck(this, Aside);
 
-		return _possibleConstructorReturn(this, (Aside.__proto__ || Object.getPrototypeOf(Aside)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (Aside.__proto__ || Object.getPrototypeOf(Aside)).call(this, props));
+
+		_this.state = { msg: {} };
+		return _this;
 	}
 
 	_createClass(Aside, [{
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			_jquery2.default.ajax({
+				url: "/aside",
+				type: "GET",
+				datatype: "json",
+				success: function (xhr) {
+					this.setState({ msg: xhr });
+				}.bind(this)
+			});
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			return _react2.default.createElement(
@@ -42,11 +61,11 @@ var Aside = function (_Component) {
 				_react2.default.createElement(
 					"div",
 					{ className: "asideTop" },
-					_react2.default.createElement("img", { className: "avatar", src: "images/avatar.jpg" }),
+					_react2.default.createElement("img", { className: "avatar", src: "/dist/images/avatar.jpg" }),
 					_react2.default.createElement(
 						"p",
 						{ className: "job" },
-						"\u8D85\u7EA7\u7BA1\u7406\u5458"
+						this.state.msg.job
 					),
 					_react2.default.createElement(
 						"div",
@@ -57,7 +76,7 @@ var Aside = function (_Component) {
 							_react2.default.createElement(
 								"p",
 								{ className: "num" },
-								"4"
+								this.state.msg.sended
 							),
 							_react2.default.createElement(
 								"p",
@@ -71,7 +90,7 @@ var Aside = function (_Component) {
 							_react2.default.createElement(
 								"p",
 								{ className: "num" },
-								"8"
+								this.state.msg.unsend
 							),
 							_react2.default.createElement(
 								"p",
@@ -173,7 +192,8 @@ var SlideDown = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (SlideDown.__proto__ || Object.getPrototypeOf(SlideDown)).call(this, props));
 
 		_this.state = {
-			contsShow: false
+			contsShow: false,
+			clicked: false
 		};
 		return _this;
 	}
@@ -181,7 +201,10 @@ var SlideDown = function (_React$Component) {
 	_createClass(SlideDown, [{
 		key: "slideToggle",
 		value: function slideToggle() {
-			this.setState({ contsShow: !this.state.contsShow });
+			this.setState({
+				contsShow: !this.state.contsShow,
+				clicked: !this.state.clicked
+			});
 		}
 	}, {
 		key: "render",
@@ -191,7 +214,7 @@ var SlideDown = function (_React$Component) {
 			}
 			return _react2.default.createElement(
 				"div",
-				{ className: "g-slide-container" },
+				{ className: "g-slide-container" + (this.state.clicked ? " on" : "") },
 				_react2.default.createElement(
 					"div",
 					{ className: "g-slide-title", onClick: this.slideToggle.bind(this) },
@@ -394,6 +417,10 @@ var _react = __webpack_require__(13);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _jquery = __webpack_require__(33);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
 var _SlideDown = __webpack_require__(183);
 
 var _SlideDown2 = _interopRequireDefault(_SlideDown);
@@ -423,23 +450,19 @@ var Header = function (_React$Component) {
 	_createClass(Header, [{
 		key: "componentDidMount",
 		value: function componentDidMount() {
-			// $.ajax({
-			// 	url: this.props.url,
-			// 	type: "GET",
-			// 	dataType: "json",
-			// 	success: (xhr) => {
-			// 		this.setState({headerMsg: xhr});
-			// 	}
-			// })
-			var xhr = {
-				"siteUrl": "www.baidu.com",
-				"noticeNum": "23",
-				noticeUrl: "www.google.com",
-				"avatarUrl": "images/avatar.jpg",
-				"userName": "ChaseUp",
-				"navMsg": [{ "name": "我的网站", "url": "myDashboard.html" }, { "name": "运营罗盘", "url": "myDashboard.html" }, { "name": "社交助手", "url": "myDashboard.html" }, { "name": "我的员工", "url": "myDashboard.html" }]
-			};
-			this.setState({ headerMsg: xhr });
+			var _this2 = this;
+
+			_jquery2.default.ajax({
+				url: "/headerMsg",
+				type: "GET",
+				dataType: "json",
+				success: function success(xhr) {
+					_this2.setState({ headerMsg: xhr });
+				},
+				error: function error(err) {
+					console.log(err);
+				}
+			});
 		}
 	}, {
 		key: "render",
@@ -447,7 +470,7 @@ var Header = function (_React$Component) {
 			return _react2.default.createElement(
 				"div",
 				{ className: "header-inner" },
-				_react2.default.createElement("img", { className: "logo", src: "images/logo.png" }),
+				_react2.default.createElement("img", { className: "logo", src: "/dist/images/logo.png" }),
 				_react2.default.createElement(
 					"a",
 					{ className: "to-mysite", href: this.state.headerMsg.siteUrl },

@@ -1,33 +1,28 @@
-import React from "react";
+import React,{Component} from "react";
+import $ from "jquery";
 
-export default class Aside extends React.Component{
+
+export default class Aside extends Component{
 	constructor(props){
 		super(props);
-		this.state = {};
+		this.state = {msg: {}};
 	}
 	componentDidMount(){
 		$.ajax({
-			url: '/path/to/file',
-			type: 'default GET (Other values: POST)',
-			dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
-			data: {param1: 'value1'},
-		})
-		.done(function() {
-			console.log("success");
-		})
-		.fail(function() {
-			console.log("error");
-		})
-		.always(function() {
-			console.log("complete");
+			url: "/aside",
+			type: "GET",
+			datatype: "json",
+			success: function(xhr){
+				this.setState({msg: xhr});
+			}.bind(this)
 		});
 	}
 	render(){
 		return (
-			<div id="aside">
+			<div id="aside" className="tt">
 				<div className="asideTop">
-					<img className="avatar" src="images/avatar.jpg" />
-					<p className="job">超级管理员</p>
+					<img className="avatar" src="/dist/images/avatar.jpg" />
+					<p className="job">{this.state.msg.job}</p>
 					<div className="msg-num">
 						<div className="sended">
 							<p className="num">4</p>
@@ -48,7 +43,7 @@ export default class Aside extends React.Component{
 	}
 }
 
-class SocialManage extends React.Component{
+class SocialManage extends Component{
 	render(){
 		return (
 			<div className="">
