@@ -48,6 +48,9 @@ var Aside = function (_Component) {
 				type: "GET",
 				datatype: "json",
 				success: function (xhr) {
+					try {
+						xhr = JSON.parse(xhr);
+					} catch (err) {}
 					this.setState({ msg: xhr });
 				}.bind(this)
 			});
@@ -456,11 +459,17 @@ var Header = function (_React$Component) {
 				url: "/headerMsg",
 				type: "GET",
 				dataType: "json",
+				data: { name: "zhangsan" },
 				success: function success(xhr) {
+					try {
+						xhr = JSON.parse(xhr);
+					} catch (err) {
+						// who cares
+					}
 					_this2.setState({ headerMsg: xhr });
 				},
 				error: function error(err) {
-					console.log(err);
+					// console.log(err);
 				}
 			});
 		}
