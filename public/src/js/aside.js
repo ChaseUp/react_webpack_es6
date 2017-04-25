@@ -13,6 +13,11 @@ export default class Aside extends Component{
 			type: "GET",
 			datatype: "json",
 			success: function(xhr){
+				try {
+					xhr = JSON.parse(xhr);
+				} catch (err) {
+
+				}
 				this.setState({msg: xhr});
 			}.bind(this)
 		});

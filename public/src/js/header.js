@@ -14,11 +14,17 @@ export default class Header extends React.Component{
 			url: "/headerMsg",
 			type: "GET",
 			dataType: "json",
+			data: {name: "zhangsan"},
 			success: (xhr) => {
+				try {
+					xhr = JSON.parse(xhr);
+				} catch (err) {
+					// who cares
+				}
 				this.setState({headerMsg: xhr});
 			},
 			error: function(err){
-				console.log(err);
+				// console.log(err);
 			}
 		});
 	}

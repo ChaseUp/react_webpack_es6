@@ -1,15 +1,19 @@
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser');
 
 module.exports = function(app){
 	app.get('/',function (req,res) {
-		res.render('index');
+		res.render('index',{
+			title: "social-msg"
+		});
 	});
 
 	app.get('/headerMsg',function(req,res){
+		var data = req.body;
 		var xhr = {
 			"siteUrl": "www.baidu.com",
-			"noticeNum": "43",
+			"noticeNum": "48",
 			"noticeUrl": "www.google.com",
 			"avatarUrl": "/dist/images/avatar.jpg",
 			"userName": "ChaseUp",
@@ -20,15 +24,15 @@ module.exports = function(app){
 				{"name": "我的员工","url": "myDashboard.html"}
 			]
 		};
-		res.send(xhr);
+		res.send(JSON.stringify(xhr));
 	});
 
 	app.get('/aside',function(req,res){
 		var msg = {
 			"job": "超級管理員",
-			"sended": "6",
+			"sended": "66",
 			"unsend": "8"
 		};
-		res.send(msg);
+		res.send(JSON.stringify(msg));
 	})
 }

@@ -5,11 +5,6 @@ var app = express();
 var port = '3300';
 
 app.use(express.static(path.join(__dirname,'public')));
-
-// app.get('/',function(req,res){
-// 	res.sendFile('./index.html');
-// })
-
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 routers(app);
